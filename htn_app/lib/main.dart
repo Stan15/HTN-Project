@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
   ];
 
 
-  Widget userPreview(user) {
+  Widget userCard(user) {
     return Card(
       margin: EdgeInsets.all(16),
       child: Row(
@@ -61,9 +61,8 @@ class _MyAppState extends State<MyApp> {
           child: Container(
             child: Center(
               child: Column(
-                children: [
-
-                ],
+                children: users.map((user) => userCard(user)
+                ).toList(),
               ),
             ),
           ),
