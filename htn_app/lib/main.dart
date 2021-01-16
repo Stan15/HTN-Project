@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:htn_app/profiles/profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,14 +14,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  List<Profile> users = {
-    new Profile(
-      name: "Stan",
-      description: "Hello, my name is stan and i am doing stuff",
-    )
-  }
+  List<Profile> users = [
+    new Profile("stan","my description"),
+  ];
 
-  }
 
   Widget userPreview(user) {
     return Card(
