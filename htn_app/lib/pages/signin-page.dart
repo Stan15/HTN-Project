@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:htn_app/resources.dart';
-import 'package:flutter/widgets/widgets.dart';
 
 class SigninPage extends StatefulWidget {
   @override
@@ -8,10 +7,25 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+
+  InputDecoration TextInputFieldDecor(String hintText) {
+    return InputDecoration(
+      hintText: hintText,
+      hintStyle: TextStyle(
+          color: Resources.hintColor
+      ),
+      focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Resources.hintColor)
+      ),
+      enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Resources.hintColor)
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarMain(),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
@@ -21,6 +35,7 @@ class _SigninPageState extends State<SigninPage> {
             ),
             TextField(
               decoration: TextInputFieldDecor("password"),
+            )
           ],
         ),
       ),

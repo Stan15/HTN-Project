@@ -8,7 +8,7 @@ class User {
   }
 
   String getSuggestion(index) {
-
+    return "hello";
   }
 
   List<String> getSuggestions() {
