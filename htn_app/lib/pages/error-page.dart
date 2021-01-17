@@ -11,8 +11,10 @@ class ErrorPage extends StatelessWidget {
           onPressed: () {Navigator.of(context).pop();},
         ),
       ),
-      body: Container(
-
+      body: Center(
+        child: Container(
+          child: Text("Error"),
+        ),
       ),
     );
   }

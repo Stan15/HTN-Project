@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:htn_app/pages/home.dart';
-import 'package:htn_app/pages/login-page.dart';
+import 'package:htn_app/pages/signin-page.dart';
 import 'package:htn_app/pages/profile-page.dart';
-import 'package:htn_app/services/user.dart';
 import 'package:htn_app/pages/error-page.dart';
+import 'package:htn_app/resources.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -12,11 +12,11 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/home':
-        return _validateToRoute(args['user'],
+        return _validateToRoute(
             MaterialPageRoute(builder: (_) => HomePage())
         );
       case '/profile':
-        return _validateToRoute(args['profile'],
+        return _validateToRoute(
             MaterialPageRoute(builder: (_) => ProfilePage(userID: args['profileUserID']))
         );
       default:
@@ -24,9 +24,9 @@ class RouteGenerator {
     }
   }
 
-  static MaterialPageRoute _validateToRoute(User user, MaterialPageRoute pageRoute) {
-    if (user==null) {
-      return MaterialPageRoute(builder: (_) => LoginPage());
+  static MaterialPageRoute _validateToRoute(MaterialPageRoute pageRoute) {
+    if (Resources.user==null) {
+      return MaterialPageRoute(builder: (_) => SigninPage());
     }else {
       return pageRoute;
     }

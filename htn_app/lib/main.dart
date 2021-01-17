@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:htn_app/route_generator.dart';
+import 'package:htn_app/resources.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,7 +9,10 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Navigator.of(context).pushNamed('/home');
-    return Container();
+    return MaterialApp(
+      title: Resources.appName,
+      initialRoute: '/home',
+      onGenerateRoute: RouteGenerator.generateRoute,
+    );
   }
 }

@@ -22,7 +22,7 @@ class ProfileTile extends StatelessWidget {
       ),
       leading: CircleAvatar(
         radius: 28,
-        backgroundImage: NetworkImage(this.imgUrl),
+        backgroundImage: this.imgUrl=="" ? Ima :NetworkImage(this.imgUrl),
       ),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
