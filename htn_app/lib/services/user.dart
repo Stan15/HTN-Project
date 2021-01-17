@@ -2,13 +2,16 @@ class User {
   String id;
   int numberOfSuggestions;
   int increaseBy = 20;
+  static int unique = 0;
 
   User(this.id) {
     this.numberOfSuggestions = 20;
   }
 
   String getSuggestion(index) {
-    return "hello";
+    unique++;
+    return unique.toString();
+
   }
 
   List<String> getSuggestions() {

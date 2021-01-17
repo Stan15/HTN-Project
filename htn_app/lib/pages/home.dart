@@ -14,6 +14,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     List<String> suggestedUsers = Resources.user.getSuggestions();
+    var _controller = ScrollController();
+    _controller.addListener(() {
+      if (_controller.position.atEdge) {
+        if (_controller.position.pixels == 0) {
+          // You're at the top.
+        } else {
+          setState(() {
+            Resources.user.addSuggestions(suggestedUsers);
+          });
+        }
+      }
+    });
 
     void dismissItem(BuildContext context, int index, DismissDirection direction) {
       setState(() {
@@ -27,29 +39,23 @@ class _HomePageState extends State<HomePage> {
       }
     }
 
-    return MaterialApp(
-      title: "home",
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text(Resources.appName),
-          ),
-          body: ListView.separated(
-            itemCount: suggestedUsers.length,
-            separatorBuilder: (context, index) => Divider(),
-            itemBuilder: (context, index) {
-              final profileUserID = suggestedUsers[index];
-              return DismissibleWidget(
-                item: profileUserID,
-                child: ProfileTile(userID: profileUserID,),
-                onDismissed: (direction) => dismissItem(context, index, direction),
-              );
-            },
-          )
-      ),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(Resources.appName),
+        ),
+        body: ListView.separated(
+          controller: _controller,
+          itemCount: suggestedUsers.length,
+          separatorBuilder: (context, index) => Divider(),
+          itemBuilder: (context, index) {
+            final profileUserID = suggestedUsers[index];
+            return DismissibleWidget(
+              item: profileUserID,
+              child: ProfileTile(userID: profileUserID,),
+              onDismissed: (direction) { dismissItem(context, index, direction);},
+            );
+          },
+        )
     );
   }
 }

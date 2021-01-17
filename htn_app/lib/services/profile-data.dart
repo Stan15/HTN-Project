@@ -5,7 +5,7 @@ class ProfileData {
   }
 
   static String getDescription(userID) {
-    return 'Hello! My name is stanley';
+    return 'Hello! My name is stanley. I am interested in so and so and I am taking part in the Hack the North Hackathon! Our project is a social media application that does so and so and we are ';
   }
 
   static String getImgUrl(userID) {

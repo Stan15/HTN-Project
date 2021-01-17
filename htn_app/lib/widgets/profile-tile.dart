@@ -6,11 +6,15 @@ class ProfileTile extends StatelessWidget {
   String imgUrl;
   String username;
   String description;
+  int maxDescLen = 35;
 
   ProfileTile({@required this.userID}) {
     this.imgUrl = ProfileData.getImgUrl(this.userID);
     this.username = ProfileData.getUsername(this.userID);
     this.description = ProfileData.getDescription(this.userID);
+    if (this.description.length>maxDescLen) {
+      this.description = this.description.substring(0, maxDescLen)+"...";
+    }
   }
 
   @override
